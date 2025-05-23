@@ -1,17 +1,96 @@
+:root {
+  --default-box-shadow-value: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  --default-max-width: 1200px;
+  --default-text-shadow: 4px 4px 6px rgba(66, 68, 90, 1);
+  --primary-color: #00ced1;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
-  font-weight: 500;
 }
 
-body {
-  max-width: 1200px;
-  margin: auto;
+body > :not(.skew-object) {
   font-family: "Playfair Display", system-ui;
 }
 
-.project-container {
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.skew-object {
+  position: absolute;
+  background-color: var(--primary-color);
+  width: 100vw;
+  height: 500px;
+  transform: translateY(-50%) skewY(-8deg);
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  padding-top: 2rem;
+  align-items: center;
+}
+
+.profile-picture {
+  max-width: min(90%, 400px);
+  position: relative;
+}
+
+.profile-picture > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.profile-name {
+  position: absolute;
+  bottom: 0%;
+  color: white;
+  text-shadow: var(--default-text-shadow);
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+}
+
+.about-me {
+  flex-grow: 1;
+  box-shadow: var(--default-box-shadow-value);
+  background-color: white;
   padding: 2rem;
+}
+
+.about-me > h2 {
+  font-size: xx-large;
+  margin-bottom: 1.5rem;
+}
+
+.about-me > p {
+  font-size: larger;
+  font-weight: lighter;
+  margin-bottom: 1rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+}
+
+.social-links a {
+  text-decoration: none;
+}
+
+.social-links img {
+  width: 26px;
+}
+
+.project-container {
+  padding: 2rem 0;
 }
 
 .project-container > h1 {
@@ -29,7 +108,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 300px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  box-shadow: var(--default-box-shadow-value);
 }
 
 .project-card .image {
@@ -74,24 +153,149 @@ body {
   font-weight: 400;
 }
 
-@media (max-width: 499px) {
-  .project-container {
-    padding: 1rem;
-  }
+footer {
+  padding: 2rem 0;
+  background-color: var(--primary-color);
+
+  position: relative;
+  width: 100vw;
+}
+
+footer > .container {
+  display: flex;
+  gap: 16px;
+}
+
+footer .social-links {
+  justify-content: start;
+}
+
+.contact-info {
+  color: white;
+  font-family: Roboto, system-ui;
+}
+
+.contact-info > * {
+  margin-bottom: 24px;
+}
+
+.contact-description {
+  font-size: larger;
+  font-weight: lighter;
+}
+
+.contact-item {
+  font-size: x-large;
+  font-weight: lighter;
+}
+
+.contact-item > * {
+  margin-bottom: 12px;
+}
+
+.footer-image {
+  max-width: 400px;
+}
+
+.footer-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+span {
+  display: inline;
+}
+
+span > img {
+  display: inline-block;
+  width: 26px;
+}
+
+@media (max-width: 599px) {
   .project-lists {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+  footer > .container {
+    flex-direction: column;
+  }
+
+  .footer-image {
+    max-width: 100%;
+  }
+
+  .contact-item {
+    font-size: large;
+    font-weight: lighter;
+  }
+
+  footer {
+    padding: 0 !important;
+  }
+
+  .contact-info {
+    padding: 1rem;
   }
 }
 
-@media (min-width: 500px) and (max-width: 999px) {
+@media (max-width: 659px) {
+  .project-container,
+  footer {
+    padding: 1rem;
+  }
+
   .project-lists {
     grid-template-columns: repeat(2, 1fr);
   }
+  header {
+    flex-direction: column;
+    text-align: start;
+  }
+
+  .about-me {
+    box-shadow: none;
+  }
+
+  .about-me > h2 {
+    text-align: center;
+  }
+
+  .about-me > p {
+    margin-bottom: 2rem;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
 }
 
-/* 
-@media (min-width: 1000px) {
-  .projects {
-    grid-template-columns: repeat(6, 1fr);
+@media (min-width: 660px) and (max-width: 999px) {
+  .container {
+    margin: 0 2rem;
   }
-} */
+
+  .project-lists {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-name {
+    top: 10%;
+    left: 55%;
+    margin: auto;
+  }
+
+  header {
+    display: block;
+  }
+
+  .profile-picture {
+    float: left;
+    margin: 0 1rem 0 0;
+  }
+
+  .about-me {
+    margin-top: 7rem;
+    margin-left: 5rem;
+  }
+}
