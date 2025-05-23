@@ -1,3 +1,97 @@
-body {
-  background-color: rebeccapurple;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: 500;
 }
+
+body {
+  max-width: 1200px;
+  margin: auto;
+  font-family: "Playfair Display", system-ui;
+}
+
+.project-container {
+  padding: 2rem;
+}
+
+.project-container > h1 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.project-lists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.project-card .image {
+  flex: 3 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-card .caption {
+  flex: 1 0 auto;
+  padding: 0.5rem 0.75rem;
+}
+
+.project-card .header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: large;
+}
+
+.project-card .link-button-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* TODO: Use calc() for font sizes */
+.project-card .header h2 {
+  font-size: 1.5rem;
+  text-decoration: inherit;
+  font-weight: 600;
+}
+
+.project-card .header a > img {
+  width: 26px;
+  vertical-align: middle;
+}
+
+.project-card .description {
+  font-family: Roboto, system-ui;
+  font-weight: 400;
+}
+
+@media (max-width: 499px) {
+  .project-container {
+    padding: 1rem;
+  }
+  .project-lists {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 500px) and (max-width: 999px) {
+  .project-lists {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 
+@media (min-width: 1000px) {
+  .projects {
+    grid-template-columns: repeat(6, 1fr);
+  }
+} */
